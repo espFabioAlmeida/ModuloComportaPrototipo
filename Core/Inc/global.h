@@ -19,12 +19,25 @@ enum BOOL {
 
 extern UART_HandleTypeDef huart4;
 
-extern uint8_t
-	flagPacoteRS485,
-	flagLedCOM;
+enum COMANDO_COMPORTAS {
+	PARAR_COMPORTAS,
+	FECHAR_COMPORTAS,
+	ABRIR_COMPORTAS,
+
+	ERRO_COMPORTAS
+};
 
 extern uint8_t
-	contadorRS485Buffer;
+	flagPacoteRS485,
+	flagLedCOM,
+
+	flagFimDeCursoSobe,
+	flagFimDeCursoDesce;
+
+extern uint8_t
+	contadorRS485Buffer,
+
+	comandoComportas;
 
 extern char
 	rs485DataIn;

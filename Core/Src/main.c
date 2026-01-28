@@ -51,10 +51,15 @@ UART_HandleTypeDef huart4;
 /* USER CODE BEGIN PV */
 uint8_t
 	flagPacoteRS485 = false,
-	flagLedCOM = false;
+	flagLedCOM = false,
+
+	flagFimDeCursoSobe = false,
+	flagFimDeCursoDesce = false;
 
 uint8_t
-	contadorRS485Buffer = 0;
+	contadorRS485Buffer = 0,
+
+	comandoComportas = PARAR_COMPORTAS;
 
 char
 	rs485DataIn = 0;
@@ -158,6 +163,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  protocoloRS485();
+	  entradasDigitais();
+	  acionamentoReles();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -336,7 +344,7 @@ static void MX_USART4_UART_Init(void)
 
   /* USER CODE END USART4_Init 1 */
   huart4.Instance = USART4;
-  huart4.Init.BaudRate = 38400;
+  huart4.Init.BaudRate = 9600;
   huart4.Init.WordLength = UART_WORDLENGTH_8B;
   huart4.Init.StopBits = UART_STOPBITS_1;
   huart4.Init.Parity = UART_PARITY_NONE;

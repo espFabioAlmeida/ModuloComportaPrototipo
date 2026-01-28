@@ -32,10 +32,10 @@ void tarefas100ms() {
 
 	if(flagLedCOM) {
 		flagLedCOM = false;
-		on(LED_COM_GPIO_Port, LED_COM_Pin);
+		off(LED_COM_GPIO_Port, LED_COM_Pin);
 	}
 	else {
-		off(LED_COM_GPIO_Port, LED_COM_Pin);
+		on(LED_COM_GPIO_Port, LED_COM_Pin);
 	}
 
 	toggle(LED_CPU_GPIO_Port, LED_CPU_Pin);
